@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demonstração de Vitrine - General Tools Brasil</title>
+  <meta name="description" content="Conheça a vitrine completa de produtos da General Tools Brasil — fluidos de usinagem, desengraxantes e químicos industriais de alta performance.">
+  <meta property="og:title" content="Demonstração de Vitrine - General Tools Brasil">
+  <meta property="og:description" content="Vitrine completa de produtos General Tools Brasil.">
+  <meta property="og:image" content="1777903863730_logo_sem_fundo.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="1777903863730_logo_sem_fundo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1a4a2e;
+      --verde-medio: #2d6a42;
+      --verde-claro: #3d8a56;
+      --ouro: #c9a227;
+      --ouro-claro: #e8bb3a;
+      --ouro-escuro: #a07d15;
+      --branco: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+      font-size: 18px;
+    }
+
+    /* ─── HEADER (idêntico ao index) ─── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 74, 46, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+      transition: box-shadow 0.3s;
+    }
+    #header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+    .logo-wrap img { height: 44px; width: auto; }
+
+    nav { display: flex; align-items: center; gap: 0.25rem; }
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover { color: var(--ouro-claro); background: rgba(201,162,39,0.08); }
+
+    .nav-cta {
+      margin-left: 0.5rem;
+      background: var(--ouro) !important;
+      color: var(--verde) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 4px !important;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--ouro-claro) !important; color: var(--verde) !important; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: transparent;
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      color: var(--branco);
+    }
+    .menu-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--branco);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ─── IFRAME ─── */
+    #vitrine-iframe {
+      display: block;
+      width: 100%;
+      border: none;
+      margin-top: 72px;
+      height: calc(100vh - 72px);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--verde); padding: 1rem 2rem 1.5rem; border-bottom: 1px solid rgba(201,162,39,0.15); }
+      nav.open { display: flex; }
+      nav a { padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); border-radius: 0; }
+      .nav-cta { margin-left: 0; margin-top: 0.5rem; text-align: center; justify-content: center; }
+      .menu-toggle { display: flex; }
+
+      #vitrine-iframe {
+        height: calc(100vh - 122px) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap" aria-label="General Tools Brasil — página inicial">
+      <img src="1777903863730_logo_sem_fundo.png" alt="Logotipo General Tools Brasil">
+    </a>
+    <nav id="main-nav" aria-label="Navegação principal">
+      <a href="index.html#hero">Início</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#mercados">Mercados</a>
+      <a href="index.html#produtos">Produtos</a>
+      <a href="index.html#servicos">Consultoria</a>
+      <a href="vitrine.html" style="color: var(--ouro-claro);">Vitrine</a>
+      <a href="index.html#contato" class="nav-cta">Fale conosco</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ─── IFRAME DA VITRINE ─── -->
+<iframe
+  id="vitrine-iframe"
+  src="https://nilsonteste1.egestor.com.br/vitrine/"
+  title="Vitrine de produtos General Tools Brasil"
+  loading="eager"
+  allow="fullscreen"
+  aria-label="Vitrine interativa de produtos General Tools Brasil">
+</iframe>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Tools Brasil</title>
+  <meta name="description" content="General Tools Brasil — solução completa em fluidos de usinagem, desengraxantes e químicos industriais de alta performance em Londrina/PR.">
+  <meta property="og:title" content="General Tools Brasil">
+  <meta property="og:description" content="Fluidos de usinagem, desengraxantes e químicos industriais de alta performance. Parceiro técnico da sua produção.">
+  <meta property="og:image" content="1777903863730_logo_sem_fundo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.generaltoolsbrasil.com.br">
+  <link rel="icon" type="image/png" href="1777903863730_logo_sem_fundo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1a4a2e;
+      --verde-medio: #2d6a42;
+      --verde-claro: #3d8a56;
+      --ouro: #c9a227;
+      --ouro-claro: #e8bb3a;
+      --ouro-escuro: #a07d15;
+      --branco: #ffffff;
+      --cinza-claro: #f5f5f0;
+      --cinza-medio: #e8e8e0;
+      --cinza-texto: #5a5a4a;
+      --preto-suave: #1a1a12;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 18px; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--branco);
+      color: var(--preto-suave);
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 74, 46, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+      transition: box-shadow 0.3s;
+    }
+    #header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+    .logo-wrap img { height: 44px; width: auto; }
+
+    nav { display: flex; align-items: center; gap: 0.25rem; }
+    nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover { color: var(--ouro-claro); background: rgba(201,162,39,0.08); }
+
+    .nav-cta {
+      margin-left: 0.5rem;
+      background: var(--ouro) !important;
+      color: var(--verde) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 4px !important;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--ouro-claro) !important; color: var(--verde) !important; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: transparent;
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      color: var(--branco);
+    }
+    .menu-toggle:focus-visible { outline: 2px solid var(--ouro); border-radius: 4px; }
+    .menu-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--branco);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(rgba(20, 55, 34, 0.82), rgba(20, 55, 34, 0.88)), url('images/hero.jpg') center / cover no-repeat;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(201,162,39,0.03) 40px,
+          rgba(201,162,39,0.03) 41px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.02) 40px,
+          rgba(255,255,255,0.02) 41px
+        );
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201,162,39,0.15);
+      border: 1px solid rgba(201,162,39,0.4);
+      color: var(--ouro-claro);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ouro);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      line-height: 0.9;
+      color: var(--branco);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+    h1 span { color: var(--ouro); }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ouro);
+      color: var(--verde);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: 2px solid var(--ouro);
+    }
+    .btn-primary:hover { background: var(--ouro-claro); border-color: var(--ouro-claro); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--branco);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--ouro);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo-img {
+      width: 220px;
+      filter: drop-shadow(0 0 30px rgba(201,162,39,0.3));
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ouro-escuro);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 32px; height: 2px;
+      background: var(--ouro);
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--verde);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ─── SOBRE ─── */
+    #sobre { background: var(--cinza-claro); }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-visual {
+      position: relative;
+    }
+
+    .sobre-card-main {
+      background: var(--verde);
+      border-radius: 12px;
+      padding: 2.5rem;
+      color: var(--branco);
+      position: relative;
+      overflow: hidden;
+    }
+    .sobre-card-main::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(201,162,39,0.1);
+    }
+    .sobre-card-main h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--ouro);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .sobre-card-main p { font-size: 0.92rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    .sobre-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .sobre-mini {
+      background: var(--branco);
+      border-radius: 10px;
+      padding: 1.25rem;
+      border-left: 3px solid var(--ouro);
+    }
+    .sobre-mini h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--verde);
+      margin-bottom: 0.4rem;
+    }
+    .sobre-mini p { font-size: 0.82rem; color: var(--cinza-texto); line-height: 1.5; }
+
+    .sobre-text p { font-size: 1rem; line-height: 1.8; color: var(--cinza-texto); margin-bottom: 1.25rem; }
+
+    .valores-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .valor-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .valor-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(201,162,39,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .valor-icon svg { width: 18px; height: 18px; stroke: var(--ouro-escuro); }
+    .valor-item h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--verde);
+      margin-bottom: 0.15rem;
+    }
+    .valor-item p { font-size: 0.83rem; color: var(--cinza-texto); line-height: 1.5; }
+
+    /* ─── MERCADOS ─── */
+    #mercados { background: var(--verde); }
+    #mercados h2 { color: var(--branco); }
+    #mercados .section-label { color: var(--ouro); }
+    #mercados .section-label::before { background: var(--ouro); }
+    #mercados .section-desc { color: rgba(255,255,255,0.65); max-width: 700px; }
+
+    .mercados-grid {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .mercado-card {
+      background: rgba(255,255,255,0.03);
+      padding: 0;
+      transition: background 0.3s;
+      cursor: default;
+      overflow: hidden;
+    }
+    .mercado-card:hover { background: rgba(201,162,39,0.08); }
+
+    .mercado-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.75;
+      transition: opacity 0.3s, transform 0.4s;
+    }
+    .mercado-card:hover .mercado-img { opacity: 0.9; transform: scale(1.04); }
+
+    .mercado-card-body {
+      padding: 1.75rem 2rem;
+    }
+
+    .mercado-icon {
+      width: 36px; height: 36px;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(201,162,39,0.12);
+      border-radius: 8px;
+    }
+    .mercado-icon svg { width: 20px; height: 20px; stroke: var(--ouro-claro); }
+    .mercado-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ouro-claro);
+      margin-bottom: 0.5rem;
+    }
+    .mercado-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .mercado-produto {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ─── PRODUTOS ─── */
+    #produtos { background: var(--branco); }
+
+    .produtos-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
+    }
+
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .produto-card {
+      border: 1px solid var(--cinza-medio);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .produto-card:hover {
+      border-color: var(--ouro);
+      box-shadow: 0 8px 30px rgba(201,162,39,0.1);
+      transform: translateY(-3px);
+    }
+
+    .produto-header {
+      background: var(--verde);
+      padding: 1.75rem 1.75rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .produto-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: rgba(201,162,39,0.2);
+      line-height: 1;
+    }
+    .produto-icon-wrap { display: flex; align-items: center; justify-content: center; }
+    .produto-icon-wrap svg { width: 28px; height: 28px; stroke: rgba(255,255,255,0.55); }
+
+    .produto-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .produto-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--verde);
+      margin-bottom: 0.6rem;
+    }
+    .produto-card p { font-size: 0.88rem; color: var(--cinza-texto); line-height: 1.65; margin-bottom: 1rem; }
+
+    .produto-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(26,74,46,0.06);
+      color: var(--verde-medio);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    /* ─── SERVIÇOS / CONSULTORIA ─── */
+    #servicos { background: var(--cinza-claro); }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .servico-steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+
+    .servico-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--verde);
+      color: var(--ouro);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .servico-step h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--verde);
+      margin-bottom: 0.3rem;
+    }
+    .servico-step p { font-size: 0.85rem; color: var(--cinza-texto); line-height: 1.6; }
+
+    .servicos-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .formato-card {
+      background: var(--branco);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--cinza-medio);
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .formato-card:hover { border-color: var(--ouro); box-shadow: 0 4px 20px rgba(201,162,39,0.08); }
+
+    .formato-icon {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: rgba(26,74,46,0.08);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .formato-icon svg { width: 24px; height: 24px; stroke: var(--verde-medio); }
+    .formato-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--verde);
+      margin-bottom: 0.35rem;
+    }
+    .formato-card p { font-size: 0.85rem; color: var(--cinza-texto); line-height: 1.6; }
+
+    .diferencial-banner {
+      margin-top: 1rem;
+      background: var(--verde);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .diferencial-banner .icon { flex-shrink: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; }
+    .diferencial-banner .icon svg { width: 26px; height: 26px; stroke: var(--ouro); }
+    .diferencial-banner h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ouro);
+      margin-bottom: 0.35rem;
+    }
+    .diferencial-banner p { font-size: 0.83rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+    /* ─── CONTATO ─── */
+    #contato { background: var(--verde); }
+    #contato h2 { color: var(--branco); }
+    #contato .section-label { color: var(--ouro); }
+    #contato .section-label::before { background: var(--ouro); }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .contato-info { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .info-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: rgba(201,162,39,0.12);
+      border: 1px solid rgba(201,162,39,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-icon svg { width: 20px; height: 20px; stroke: var(--ouro); }
+    .info-item h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ouro);
+      margin-bottom: 0.2rem;
+    }
+    .info-item p, .info-item a {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      line-height: 1.5;
+    }
+    .info-item a:hover { color: var(--ouro-claro); }
+
+    .contato-social {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-link {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .social-link:hover { background: rgba(201,162,39,0.15); border-color: rgba(201,162,39,0.4); }
+
+    .contato-map {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .contato-map iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+    }
+
+    .contato-wpp {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .btn-wpp-grande {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #25d366;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      border: 2px solid #25d366;
+    }
+    .btn-wpp-grande:hover { background: #1ebc5a; border-color: #1ebc5a; transform: translateY(-2px); }
+    .btn-wpp-grande svg { width: 24px; height: 24px; fill: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--preto-suave);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand img { height: 48px; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 300px; }
+
+    .footer-col h5 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ouro);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-cnpj { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* ─── WHATSAPP FLUTUANTE ─── */
+    .wpp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .wpp-float:hover {
+      background: #1ebc5a;
+      box-shadow: 0 6px 22px rgba(37,211,102,0.5);
+      transform: scale(1.05);
+    }
+    .wpp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; padding: 3rem 1.5rem; }
+      .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+      .hero-visual { display: none; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; width: 100%; justify-content: unset; margin-top: 2rem; padding-top: 2rem; }
+      .hero-stats > div { text-align: center; }
+
+      .sobre-grid,
+      .servicos-grid,
+      .contato-grid,
+      .produtos-header { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .mercados-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+      nav { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--verde); padding: 1rem 2rem 1.5rem; border-bottom: 1px solid rgba(201,162,39,0.15); }
+      nav.open { display: flex; }
+      nav a { padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); border-radius: 0; }
+      .nav-cta { margin-left: 0; margin-top: 0.5rem; text-align: center; justify-content: center; }
+      .menu-toggle { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .mercados-grid { grid-template-columns: 1fr; }
+      .sobre-cards-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="logo-wrap" aria-label="General Tools Brasil — página inicial">
+      <img src="1777903863730_logo_sem_fundo.png" alt="Logotipo General Tools Brasil">
+    </a>
+    <nav id="main-nav" aria-label="Navegação principal">
+      <a href="#hero">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#mercados">Mercados</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#servicos">Consultoria</a>
+      <a href="vitrine.html">Vitrine</a>
+      <a href="#contato" class="nav-cta">Fale conosco</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-badge">Londrina/PR — Fornecimento nacional</span>
+      <h1 id="hero-title">General<br>Tools <span>Brasil</span></h1>
+      <p class="hero-sub">Solução completa em fluidos de usinagem, desengraxantes e químicos industriais de alta performance para a sua produção.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/554333391209" class="btn-primary" aria-label="Entrar em contato pelo WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.852L.057 23.4a.75.75 0 00.935.933l5.624-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.752-.532-5.299-1.454l-.38-.227-3.936 1.027 1.048-3.828-.248-.394A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="#produtos" class="btn-secondary">Ver produtos</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">+18</div>
+          <div class="stat-label">Anos de experiência</div>
+        </div>
+        <div>
+          <div class="stat-num">+5</div>
+          <div class="stat-label">Anos de fornecimento</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Segmentos atendidos</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img src="1777903863730_logo_sem_fundo.png" alt="" class="hero-logo-img">
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE ─── -->
+<section id="sobre" aria-labelledby="sobre-title">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-visual fade-in">
+        <div class="sobre-card-main">
+          <h3>Nossa origem</h3>
+          <p>A General Tools Brasil nasceu da prática. Com mais de 18 anos de experiência em usinagem, desenvolvemos soluções que testamos e validamos em nosso próprio centro de produção antes de oferecer ao mercado.</p>
+        </div>
+        <div class="sobre-cards-row">
+          <div class="sobre-mini">
+            <h4>Missão</h4>
+            <p>Solução completa em químicos industriais para garantir continuidade, conservação e eficiência técnica.</p>
+          </div>
+          <div class="sobre-mini">
+            <h4>Visão</h4>
+            <p>Ser referência em confiabilidade e agilidade no fornecimento de fluidos industriais em todo o Brasil.</p>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-text fade-in fade-in-delay-1">
+        <span class="section-label" aria-hidden="true">Quem somos</span>
+        <h2 id="sobre-title">Parceiros do chão de fábrica</h2>
+        <p>Há mais de 5 anos a General Tools Brasil fornece insumos de alta performance para a indústria. O que nos diferencia é simples: somos usuários daquilo que vendemos.</p>
+        <p>Sediados em Londrina/PR, cada produto do nosso catálogo é testado e validado em nosso próprio centro de usinagem. Isso nos dá a segurança de oferecer qualidade real, em volumes que se adaptam à sua necessidade — de 1 litro a 1.000 litros.</p>
+        <div class="valores-list" role="list">
+          <div class="valor-item" role="listitem">
+            <div class="valor-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <h4>Eficiência técnica</h4>
+              <p>Produtos que cumprem o que prometem em lubrificação, refrigeração e limpeza.</p>
+            </div>
+          </div>
+          <div class="valor-item" role="listitem">
+            <div class="valor-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+            <div>
+              <h4>Solução completa</h4>
+              <p>Do processo de corte à limpeza final, tudo em um único parceiro.</p>
+            </div>
+          </div>
+          <div class="valor-item" role="listitem">
+            <div class="valor-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div>
+              <h4>Parceria operacional</h4>
+              <p>Atuamos como suporte real para a manutenção e produção industrial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MERCADOS ─── -->
+<section id="mercados" aria-labelledby="mercados-title">
+  <div class="section-inner">
+    <span class="section-label" aria-hidden="true">Segmentos</span>
+    <h2 id="mercados-title">Mercados atendidos</h2>
+    <p class="section-desc">Atendemos empresas de diferentes setores com produtos específicos para cada necessidade técnica e operacional.</p>
+    <div class="mercados-grid">
+      <article class="mercado-card fade-in">
+        <img src="images/usinagem.jpg" alt="Usinagem e ferramentaria" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <h3>Usinagem e ferramentaria</h3>
+          <p>Focada em precisão e acabamento de alto nível em metais.</p>
+          <p class="mercado-produto">Ex.: GT FLUID 500 SI (sintético) e GT BARRAMENTO para guias CNC</p>
+        </div>
+      </article>
+      <article class="mercado-card fade-in fade-in-delay-1">
+        <img src="images/manutenção-industrial.jpg" alt="Manutenção industrial" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></span>
+          <h3>Manutenção industrial (MRO)</h3>
+          <p>Para garantir que o maquinário nunca pare por falta de cuidado.</p>
+          <p class="mercado-produto">Ex.: GT PROTEC 100 — óleo protetivo anticorrosivo para peças e componentes</p>
+        </div>
+      </article>
+      <article class="mercado-card fade-in fade-in-delay-2">
+        <img src="images/caldeiraria.jpg" alt="Metalmecânica e caldeiraria" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg></span>
+          <h3>Metalmecânica e caldeiraria</h3>
+          <p>Soluções robustas para processos de transformação de metal.</p>
+          <p class="mercado-produto">Ex.: Anti-respingo GT 100 e GT MATIC para roscagem</p>
+        </div>
+      </article>
+      <article class="mercado-card fade-in">
+        <img src="images/automotiva.jpg" alt="Indústria automotiva e autopeças" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5v-5l2-6h10l2 6v5z"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg></span>
+          <h3>Indústria automotiva e autopeças</h3>
+          <p>Limpeza técnica e precisão em larga escala.</p>
+          <p class="mercado-produto">Ex.: GT LIMPSOLV 100 — solvente de alto poder sem resíduos</p>
+        </div>
+      </article>
+      <article class="mercado-card fade-in fade-in-delay-1">
+        <img src="images/agricola.jpg" alt="Setor agrícola" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+          <h3>Setor agrícola</h3>
+          <p>Resistência para quem trabalha com maquinário pesado no campo.</p>
+          <p class="mercado-produto">Ex.: GT DDF — 3 em 1: desengraxante, decapante e fosfatizante</p>
+        </div>
+      </article>
+      <article class="mercado-card fade-in fade-in-delay-2">
+        <img src="images/higiene.jpg" alt="Higiene e segurança industrial" class="mercado-img">
+        <div class="mercado-card-body">
+          <span class="mercado-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4 3 4 3.5 3.5 5.5C3 7.5 4 9 6 8s5 0 5 0"/><path d="m12 6 3.5-3.5a1.5 1.5 0 0 1 1-.5C18 2 18 2.5 18.5 4.5S18 8 16 7s-5 0-5 0"/><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M10 12h4"/><path d="M10 16h4"/></svg></span>
+          <h3>Higiene e segurança industrial</h3>
+          <p>Cuidado com o maior ativo da empresa: o colaborador.</p>
+          <p class="mercado-produto">Ex.: GT HAND SOLV — sabonete com microesferas para sujeiras pesadas</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUTOS ─── -->
+<section id="produtos" aria-labelledby="produtos-title">
+  <div class="section-inner">
+    <div class="produtos-header">
+      <div class="fade-in">
+        <span class="section-label" aria-hidden="true">Catálogo</span>
+        <h2 id="produtos-title">Linha de produtos</h2>
+      </div>
+      <p class="section-desc fade-in fade-in-delay-1">Cada item do nosso catálogo é testado e validado em nosso próprio centro de usinagem. Disponibilizamos embalagens de 1L a 1.000L conforme sua necessidade.</p>
+    </div>
+    <div class="produtos-grid">
+      <article class="produto-card fade-in">
+        <div class="produto-header">
+          <div class="produto-num" aria-hidden="true">01</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Fluidos de usinagem e lubrificantes</h3>
+          <p>Alta tecnologia para refrigeração, lubrificação e proteção de máquinas. Óleos solúveis (sintéticos e semissintéticos), fluidos de corte integral, óleos de barramento e fluidos para eletroerosão.</p>
+          <div class="produto-tags">
+            <span class="tag">Usinagem</span>
+            <span class="tag">CNC</span>
+            <span class="tag">Lubrificação</span>
+          </div>
+        </div>
+      </article>
+      <article class="produto-card fade-in fade-in-delay-1">
+        <div class="produto-header">
+          <div class="produto-num" aria-hidden="true">02</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6l3 9H7l3-9V2"/><path d="M6 2h12"/><path d="M9 17h6"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Limpeza técnica e desengraxantes</h3>
+          <p>Soluções potentes para remoção de contaminantes sem agredir a superfície. Desengraxantes de base solvente, biodegradáveis (solúveis em água) e decapantes fosfatizantes.</p>
+          <div class="produto-tags">
+            <span class="tag">Limpeza</span>
+            <span class="tag">Pré-pintura</span>
+            <span class="tag">MRO</span>
+          </div>
+        </div>
+      </article>
+      <article class="produto-card fade-in fade-in-delay-2">
+        <div class="produto-header">
+          <div class="produto-num" aria-hidden="true">03</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Proteção e auxiliares de processo</h3>
+          <p>Produtos estratégicos para proteger seu investimento. Óleos protetivos contra oxidação e anti-respingos de solda sem silicone para armazenamento de peças e soldagem.</p>
+          <div class="produto-tags">
+            <span class="tag">Anticorrosão</span>
+            <span class="tag">Solda</span>
+            <span class="tag">Estoque</span>
+          </div>
+        </div>
+      </article>
+      <article class="produto-card fade-in">
+        <div class="produto-header">
+          <div class="produto-num" aria-hidden="true">04</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Água desmineralizada</h3>
+          <p>Pureza garantida para processos industriais e laboratoriais. Disponível em embalagens de 1L até containers IBC de 1.000L. Ideal para diluição de fluidos solúveis e sistemas de arrefecimento.</p>
+          <div class="produto-tags">
+            <span class="tag">Fluidos solúveis</span>
+            <span class="tag">Laboratório</span>
+            <span class="tag">1L — 1.000L</span>
+          </div>
+        </div>
+      </article>
+      <article class="produto-card fade-in fade-in-delay-1">
+        <div class="produto-header">
+          <div class="produto-num" aria-hidden="true">05</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M9 2v2.789a4 4 0 0 1-.672 2.219l-.656.984A4 4 0 0 0 7 10.212V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-9.789a4 4 0 0 0-.672-2.219l-.656-.984A4 4 0 0 1 15 4.788V2"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Higiene industrial profissional</h3>
+          <p>Cuidado eficiente na limpeza pesada. GT Hand Solv — sabonete esfoliante com microesferas para remoção de graxas, óleos e fuligens em oficinas e linhas de produção.</p>
+          <div class="produto-tags">
+            <span class="tag">EPI</span>
+            <span class="tag">Higiene</span>
+            <span class="tag">Oficinas</span>
+          </div>
+        </div>
+      </article>
+      <article class="produto-card fade-in fade-in-delay-2" style="border-color: var(--ouro); background: linear-gradient(135deg, rgba(201,162,39,0.04), transparent);">
+        <div class="produto-header" style="background: linear-gradient(135deg, var(--verde), var(--verde-medio));">
+          <div class="produto-num" style="color: rgba(201,162,39,0.35);" aria-hidden="true">+</div>
+          <div class="produto-icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+        </div>
+        <div class="produto-body">
+          <h3>Embalagens adaptáveis</h3>
+          <p>Entendemos que cada indústria tem uma demanda diferente. Linha química e lubrificantes disponíveis em 20L e 200L. Água desmineralizada de 1L a 1.000L. Higiene em potes de 5L.</p>
+          <div class="produto-tags">
+            <span class="tag">20L</span>
+            <span class="tag">200L</span>
+            <span class="tag">IBC 1.000L</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- CTA Vitrine -->
+    <div style="margin-top: 3rem; text-align: center; padding: 2.5rem; background: linear-gradient(135deg, var(--verde), var(--verde-medio)); border-radius: 16px; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ouro);">Catálogo online</span>
+      <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--branco); letter-spacing: 0.02em; line-height: 1;">Explore nossa vitrine interativa</h3>
+      <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6;">Navegue pelo catálogo completo de produtos General Tools Brasil com fotos, descrições técnicas e opções de embalagem — tudo em um só lugar.</p>
+      <a href="vitrine.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ouro); color: var(--verde); font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.9rem 2.25rem; border-radius: 6px; text-decoration: none; margin-top: 0.25rem; transition: background 0.2s, transform 0.2s;" onmouseover="this.style.background='#e8bb3a';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#c9a227';this.style.transform='translateY(0)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M2 10h20"/></svg>
+        Acessar vitrine
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVIÇOS ─── -->
+<section id="servicos" aria-labelledby="servicos-title">
+  <div class="section-inner">
+    <div class="servicos-grid">
+      <div class="fade-in">
+        <span class="section-label" aria-hidden="true">Consultoria</span>
+        <h2 id="servicos-title">Expertise que vai além do produto</h2>
+        <p class="section-desc">Não apenas vendemos insumos — oferecemos nossa expertise para otimizar os processos do seu dia a dia industrial.</p>
+        <div class="servico-steps">
+          <div class="servico-step">
+            <div class="step-num" aria-hidden="true">01</div>
+            <div>
+              <h4>Indicação técnica</h4>
+              <p>Escolha do fluido de usinagem ideal para cada tipo de metal e operação específica.</p>
+            </div>
+          </div>
+          <div class="servico-step">
+            <div class="step-num" aria-hidden="true">02</div>
+            <div>
+              <h4>Otimização de processos</h4>
+              <p>Redução do desgaste de ferramentas e aumento da produtividade na linha de produção.</p>
+            </div>
+          </div>
+          <div class="servico-step">
+            <div class="step-num" aria-hidden="true">03</div>
+            <div>
+              <h4>Gestão de insumos</h4>
+              <p>Orientações sobre diluição correta, descarte responsável e conservação de máquinas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="servicos-visual fade-in fade-in-delay-1">
+        <div class="formato-card">
+          <div class="formato-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
+          <div>
+            <h3>Atendimento presencial</h3>
+            <p>Para indústrias de Londrina e região, realizamos visitas técnicas diretamente no seu chão de fábrica, acompanhando o funcionamento das máquinas e a aplicação dos produtos.</p>
+          </div>
+        </div>
+        <div class="formato-card">
+          <div class="formato-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <div>
+            <h3>Atendimento remoto</h3>
+            <p>Para clientes em outras localidades, oferecemos suporte técnico especializado via canais digitais, com agilidade e soluções precisas independentemente da distância.</p>
+          </div>
+        </div>
+        <div class="diferencial-banner">
+          <div class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div>
+            <h4>Diferencial General Tools</h4>
+            <p>Nossa consultoria é baseada na experiência real. O que recomendamos é o que aplicamos e testamos em nosso próprio centro de usinagem há mais de 18 anos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTATO ─── -->
+<section id="contato" aria-labelledby="contato-title">
+  <div class="section-inner">
+    <span class="section-label" aria-hidden="true">Fale conosco</span>
+    <h2 id="contato-title">Entre em contato</h2>
+    <div class="contato-grid">
+      <div class="contato-info fade-in">
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <h4>Endereço</h4>
+            <p>Rua Antonio Piovesan, 320<br>Jd. Alpes — Londrina/PR</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <h4>Telefone</h4>
+            <a href="tel:+554333391209">(43) 3339-1209</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div>
+            <h4>E-mail</h4>
+            <a href="mailto:contato@generaltoolsbrasil.com.br">contato@generaltoolsbrasil.com.br</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <h4>Horário</h4>
+            <p>Atendimento com hora marcada</p>
+          </div>
+        </div>
+        <div class="contato-social" aria-label="Redes sociais">
+          <a href="https://www.instagram.com/generaltoolsbrasil/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram da General Tools Brasil">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/554333391209" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da General Tools Brasil">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.852L.057 23.4a.75.75 0 00.935.933l5.624-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.752-.532-5.299-1.454l-.38-.227-3.936 1.027 1.048-3.828-.248-.394A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+        </div>
+        <div class="contato-wpp">
+          <a href="https://wa.me/554333391209" class="btn-wpp-grande" aria-label="Enviar mensagem pelo WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.852L.057 23.4a.75.75 0 00.935.933l5.624-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.752-.532-5.299-1.454l-.38-.227-3.936 1.027 1.048-3.828-.248-.394A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Chamar no WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="contato-map fade-in fade-in-delay-1">
+        <iframe
+          title="Localização da General Tools Brasil no Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.4!2d-51.175!3d-23.308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDE4JzI4LjgiUyA1McKwMTAnMzAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr&q=Rua+Antonio+Piovesan,+320,+Londrina,+PR"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Mapa com a localização da General Tools Brasil em Londrina/PR">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="1777903863730_logo_sem_fundo.png" alt="Logotipo General Tools Brasil">
+        <p>Solução completa em fluidos de usinagem, desengraxantes e químicos industriais de alta performance para a indústria brasileira.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#mercados">Mercados</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#servicos">Consultoria</a></li>
+          <li><a href="vitrine.html">Vitrine</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="tel:+554333391209">(43) 3339-1209</a></li>
+          <li><a href="mailto:contato@generaltoolsbrasil.com.br">contato@generaltoolsbrasil.com.br</a></li>
+          <li><a href="https://wa.me/554333391209">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/generaltoolsbrasil/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 General Tools Brasil. Todos os direitos reservados. Londrina/PR</p>
+      <p class="footer-cnpj">CNPJ: 55.943.562/0001-60</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Rodapé MonteSite - Atualização Automática -->
+<div id="montesite-footer-badge"></div>
+<script src="https://vaabpicspdbolvutnscp.supabase.co/functions/v1/get-footer-iframe"></script>
+
+<!-- ─── WHATSAPP FLUTUANTE ─── -->
+<a href="https://wa.me/554333391209" class="wpp-float" aria-label="Conversar pelo WhatsApp" target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.852L.057 23.4a.75.75 0 00.935.933l5.624-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.943 0-3.752-.532-5.299-1.454l-.38-.227-3.936 1.027 1.048-3.828-.248-.394A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Mobile menu
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
